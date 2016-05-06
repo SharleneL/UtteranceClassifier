@@ -1,0 +1,11 @@
+task_cat_path=../Data/utterances/task/task-category.csv
+task_utt_correct_path=../Data/utterances/task/task-correct.csv
+task_utt_error_path=../Data/utterances/task/task-error.csv
+nontask_cat_path=../Data/utterances/nontask/nontask-category.csv
+nontask_utt_correct_path=../Data/utterances/nontask/nontask-correct.csv
+nontask_utt_error_path=../Data/utterances/nontask/nontask-error.csv
+chat_path=../Data/chat/chatbot.txt
+output_folder_path=../Data/output/
+dataset_type=correct
+feature_type=bow
+fold_num=5

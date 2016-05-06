@@ -1,0 +1,4 @@
+wgram_list=1,2,3
+cgram_list=3
+task_fpath=../data/output_task.txt
+nontask_fpath=../data/output_nontask_sample.txt

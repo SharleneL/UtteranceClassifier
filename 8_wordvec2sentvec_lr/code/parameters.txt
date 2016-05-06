@@ -1,0 +1,7 @@
+gen_method=inner_prd
+corpus_word_path=../data/task_nontask_chat/ch2v_word_list
+corpus_word_vector_path=../data/task_nontask_chat/ch2v_vector_list
+task_cat_path=../data/utterances/task/task-category.csv
+nontask_cat_path=../data/utterances/nontask/nontask-category.csv
+utt_path_list=../data/utterances/task/task-correct.csv ../data/utterances/task/task-error.csv ../data/utterances/nontask/nontask-correct.csv ../data/utterances/nontask/nontask-error.csv ../data/chat/chatbot.txt
+output_fpath_list=../output/task_correct_sentence_vector_list ../output/task_error_sentence_vector_list ../output/nontask_correct_sentence_vector_list ../output/nontask_error_sentence_vector_list ../output/chat_sentence_vector_list
