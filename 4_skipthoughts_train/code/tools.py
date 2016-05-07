@@ -22,9 +22,10 @@ from model import init_params, build_encoder, build_encoder_w2v
 #-----------------------------------------------------------------------------#
 # Specify model and dictionary locations here
 #-----------------------------------------------------------------------------#
-path_to_model = '/u/rkiros/research/semhash/models/toy.npz'
-path_to_dictionary = '/ais/gobi3/u/rkiros/bookgen/book_dictionary_large.pkl'
-path_to_word2vec = '/ais/gobi3/u/rkiros/word2vec/GoogleNews-vectors-negative300.bin'
+path_to_model = 'model.npz'
+# path_to_dictionary = 'char2vector/ch2v.pkl'
+path_to_dictionary = 'dictionary'
+path_to_word2vec = 'char2vector/ch2v.bin'
 #-----------------------------------------------------------------------------#
 
 def load_model(embed_map=None):
@@ -100,7 +101,6 @@ def encode(model, X, use_norm=True, verbose=True, batch_size=128, use_eos=False)
     captions = [s.split() for s in X]
     for i,s in enumerate(captions):
         ds[len(s)].append(i)
-
     # Get features. This encodes by length, in order to avoid wasting computation
     for k in ds.keys():
         if verbose:
@@ -108,7 +108,6 @@ def encode(model, X, use_norm=True, verbose=True, batch_size=128, use_eos=False)
         numbatches = len(ds[k]) / batch_size + 1
         for minibatch in range(numbatches):
             caps = ds[k][minibatch::numbatches]
-
             if use_eos:
                 embedding = numpy.zeros((k+1, len(caps), model['options']['dim_word']), dtype='float32')
             else:
@@ -131,7 +130,6 @@ def encode(model, X, use_norm=True, verbose=True, batch_size=128, use_eos=False)
                     ff[j] /= norm(ff[j])
             for ind, c in enumerate(caps):
                 features[c] = ff[ind]
-    
     return features
 
 def preprocess(text):
@@ -200,7 +198,7 @@ def train_regressor(options, embed_map, wordvecs, worddict):
             count += 1
 
     # Get the vectors for all words in 'shared'
-    w2v = numpy.zeros((len(shared), 300), dtype='float32')
+    w2v = numpy.zeros((len(shared), 200), dtype='float32')
     sg = numpy.zeros((len(shared), options['dim_word']), dtype='float32')
     for w in shared.keys():
         w2v[shared[w]] = embed_map[w]

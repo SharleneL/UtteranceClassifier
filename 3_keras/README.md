@@ -1,4 +1,5 @@
-**This set of experiment is to run Deep Learning/Logistic Regression on Correct/Error dataset, and make comparisons**
+# Introduction
+This set of experiment is to run Deep Learning/Logistic Regression on Correct/Error dataset, and make comparisons
 
 # About folders & files:
 1. `Code`: contains the code & lib

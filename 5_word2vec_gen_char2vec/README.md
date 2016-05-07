@@ -1,3 +1,6 @@
+# Introduction
+This set of experiments build a character2vector model by modifying Google word2vec model.
+
 # Files and folders
 - `code/`: this folder contains all the code, including the word2vec open source provided by Google. The code can be found [here](https://code.google.com/archive/p/word2vec/).
 - `data/`: this folder contains the datasets used in the experiments, including task/nontask correct/error datasets.

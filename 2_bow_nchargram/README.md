@@ -4,9 +4,6 @@ This experiment uses a new algorithm for building features for utterances:
 - If there exists testing data: use character 3-gram as feature to do classification
 Also modify the dataset: uses corrected utterances as well as the errorful utterances, in order to make comparisons.
 
-
-**the classification accuracy is really high, reason: the dataset is small, so we can change binary classification into multiclassification; another is that the data is small, so there would be a lot of tokens out of the training vocabulary, so probably most of the utterances are classified using BOW&ncgram feature**
-
 # Folders & files
 - `data/` folder
  - Contains task & nontask datasets

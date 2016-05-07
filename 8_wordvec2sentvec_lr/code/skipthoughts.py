@@ -20,12 +20,12 @@ profile = False
 #-----------------------------------------------------------------------------#
 # Specify model and table locations here
 #-----------------------------------------------------------------------------#
-path_to_models = './'
-path_to_tables = './'
+path_to_models = '../output/skip-thoughts/'
+path_to_tables = '../output/skip-thoughts/'
 #-----------------------------------------------------------------------------#
 
-path_to_umodel = path_to_models + 'uni_skip.npz'
-path_to_bmodel = path_to_models + 'bi_skip.npz'
+path_to_umodel = path_to_models + 'ch2v_table.npy'
+path_to_bmodel = path_to_models + 'ch2v_table.npy'
 
 
 def load_model():
@@ -80,7 +80,7 @@ def load_tables():
     print '***'
     print type(utable)
     btable = numpy.load(path_to_tables + 'btable.npy')
-    f = open(path_to_tables + 'dictionary.txt', 'rb')
+    f = open(path_to_tables + 'ch2v_word_list', 'rb')
     for line in f:
         words.append(line.decode('utf-8').strip())
     f.close()

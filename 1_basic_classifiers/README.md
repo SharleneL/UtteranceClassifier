@@ -1,5 +1,3 @@
-**Shalin Luo * 2016**
-
 # Introduction
 This set of experiment is to:
  1. Test different machine learning model's classification accuracy on task/nontask dataset (binary classification)
