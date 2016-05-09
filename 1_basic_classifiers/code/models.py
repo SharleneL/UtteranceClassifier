@@ -15,7 +15,7 @@ from sklearn import tree
 from sklearn.svm import SVC
 
 
-#     ==========/ Logistic Regression /========== # 0.8723
+#     ==========/ Logistic Regression /==========
 def lr(X, y):
     # TUNE
     # for C in range(1, 5, 1):
@@ -28,7 +28,7 @@ def lr(X, y):
     return scores.mean()
 
 
-# ==========/ KNN /========== # 0.7980-uniform; 0.7932-distance
+# ==========/ KNN /==========
 def knn(X, y):
     knn = KNeighborsClassifier(n_neighbors=3)  # 3 is the max
 
@@ -43,35 +43,35 @@ def knn(X, y):
     return np.mean(k_scores)
 
 
-# ==========/ GNB /========== # 0.7623
+# ==========/ GNB /==========
 def gnb(X, y):
     gnb = GaussianNB()
     scores = cross_val_score(gnb, X.toarray(), y, cv=5, scoring='accuracy')
     return scores.mean()
 
 
-# ==========/ MNB /========== # 0.8523
+# ==========/ MNB /==========
 def mnb(X, y):
     mnb = MultinomialNB()
     scores = cross_val_score(mnb, X, y, cv=5, scoring='accuracy')
     return scores.mean()
 
 
-# ==========/ BNB /========== # 0.8376
+# ==========/ BNB /==========
 def bnb(X, y):
     bnb = BernoulliNB()
     scores = cross_val_score(bnb, X, y, cv=5, scoring='accuracy')
     return scores.mean()
 
 
-# ==========/ Decision Tree /========== # 0.8194
+# ==========/ Decision Tree /==========
 def dtree(X, y):
     dtr = tree.DecisionTreeClassifier()
     scores = cross_val_score(dtr, X, y, cv=5, scoring='accuracy')
     return scores.mean()
 
 
-# ==========/ SVM /========== # 0.877501
+# ==========/ SVM /==========
 def svm(X, y):
     # TUNE
     # C_2d_range = np.arange(1, 10, 1).tolist()
