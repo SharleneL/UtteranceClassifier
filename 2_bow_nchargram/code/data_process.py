@@ -7,6 +7,9 @@ from sklearn.linear_model import LogisticRegression
 import numpy as np
 from scipy.sparse import csr_matrix
 from sklearn.svm import SVC
+from sklearn.externals import joblib
+import pickle
+import cPickle
 
 
 # FUNCTION TO LOAD DATA INTO UTTERANCES[]
@@ -69,21 +72,32 @@ def cross_validate(utterances, fold_num, classify_method):
         test_y = np.asarray([f[1] for f in test_features])
 
         # # LR
-        # lr = LogisticRegression(C=1.0)
-        # lr.fit(train_X, train_y)
-        # lr_y_pred = lr.predict(test_X)
-        # lr_acry = metrics.accuracy_score(test_y, lr_y_pred)
-        # print '[LR Classification] Cross Validation Fold#' + str(i+1) + ': ' + str(lr_acry)
+        lr = LogisticRegression(C=1.0)
+        lr.fit(train_X, train_y)
+        lr_y_pred = lr.predict(test_X)
+        lr_acry = metrics.accuracy_score(test_y, lr_y_pred)
+        print '[LR Classification] Cross Validation Fold#' + str(i+1) + ': ' + str(lr_acry)
 
         # SVM
-        for C in [1, 10, 50, 100]:
-            for gamma in [0.01, 0.1, 0.5, 1.0]:
-                svm = SVC(C=C, gamma=gamma)
-                svm.fit(train_X, train_y)
-                svm_y_pred = svm.predict(test_X)
-                svm_acry = metrics.accuracy_score(test_y, svm_y_pred)
-                print 'C='+str(C) + '\tgamma='+str(gamma)
-                print '[SVM Classification] Cross Validation Fold#' + str(i+1) + ': ' + str(svm_acry)
+        # for C in [1, 10, 50, 100]:
+        #     for gamma in [0.01, 0.1, 0.5, 1.0]:
+        #         svm = SVC(C=C, gamma=gamma)
+        #         svm.fit(train_X, train_y)
+        #         svm_y_pred = svm.predict(test_X)
+        #         svm_acry = metrics.accuracy_score(test_y, svm_y_pred)
+        #         print 'C='+str(C) + '\tgamma='+str(gamma)
+        #         print '[SVM Classification] Cross Validation Fold#' + str(i+1) + ': ' + str(svm_acry)
+
+        # --- / DUMP FILES - START / --- #
+        # # save the dict
+        # with open('token_index_dic.pickle', 'wb') as dic:
+        #     pickle.dump(tk_idx_dic, dic)
+
+        # # save the model
+        # joblib.dump(lr, 'task_nontask_classifier.pkl')
+        # with open('task_nontask_classifier.pkl', 'wb') as fid:
+        #     cPickle.dump(lr, fid)
+        # --- / DUMP FILES - END / --- #
 
 
 # FUNCTION TO GET VOC FOR UTTERANCES

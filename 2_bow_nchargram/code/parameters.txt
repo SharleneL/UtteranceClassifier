@@ -6,4 +6,4 @@ nontask_correct_utt_path=../data/nontask/nontask-correct.csv
 nontask_error_utt_path=../data/nontask/nontask-error.csv
 utt_type=correct
 fold_num=5
-classify_method=multi
+classify_method=binary
